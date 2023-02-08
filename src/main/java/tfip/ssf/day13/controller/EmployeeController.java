@@ -1,5 +1,6 @@
 package tfip.ssf.day13.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -37,7 +39,7 @@ public class EmployeeController {
 
     @PostMapping("/addNew")
     //Model model must be the last argument else wont work
-    public String addEmployee(@Valid @ModelAttribute("employee") Employee newEmployee, BindingResult result, Model model){
+    public String addEmployee(@Valid @ModelAttribute("employee") Employee newEmployee, BindingResult result, Model model) throws IOException{
         if (result.hasErrors()){
             return "employeeAdd";
         }
@@ -45,4 +47,26 @@ public class EmployeeController {
         return "redirect:/employee/home";
     }
 
+    @GetMapping("/delete/{email}")
+    public String deleteEmployee(@PathVariable("email") String email){
+        Employee employee = employeeRepo.findByEmail(email);
+        Boolean delResult = employeeRepo.delete(employee);
+        return "redirect:/employee/home";
+    }
+
+    @GetMapping("/update/{email}")
+    public String updateEmployee(@PathVariable("email") String email, Model model){
+        Employee employee = employeeRepo.findByEmail(email);
+        model.addAttribute("employee",employee);
+        return "employeeUpdate";
+    }
+
+    @PostMapping("/updateEmp")
+    public String updateEmployeeProcess(@ModelAttribute("employee") Employee employee, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "employeeUpdate";
+        }
+        employeeRepo.update(employee);
+        return "redirect:/employee/home";
+    }
 }
