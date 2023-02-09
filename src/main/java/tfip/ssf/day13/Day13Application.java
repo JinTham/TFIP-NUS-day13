@@ -28,5 +28,5 @@ public class Day13Application implements ApplicationRunner {
 			}
 		}
 	}
-	//mvn spring-boot:run -Dspring-boot.run.arguments="--dataDir=C:/Users/user/My File/TFIP/Code/day13""
+	//mvn spring-boot:run -Dspring-boot.run.arguments="--dataDir=C:/Users/user/My\sFile/TFIP/Code/day13""
 }
