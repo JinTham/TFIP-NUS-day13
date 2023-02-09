@@ -1,1 +1,2 @@
-Employee [firstName=dsfsdf, lastName=sdfsdf, email=sdfsdf@gmail.com, phone=84659855, salary=55000, birthday=Sat Feb 04 00:00:00 SGT 2023, address=sdfsdf, postcode=645654]
+Employee [firstName=sadfe, lastName=Brown, email=asdf@gmail.com, phone=91464646, salary=5000, birthday=Tue Jan 31 00:00:00 SGT 2023, address=sdfsdfsdf, postcode=811005]
+Employee [firstName=James, lastName=Brown, email=jamesbrown@gmail.com, phone=99999999, salary=9999, birthday=Mon Jan 30 00:00:00 SGT 2023, address=Taman Ros Merah, postcode=999999]

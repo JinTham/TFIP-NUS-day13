@@ -14,14 +14,19 @@ public class Day13Application implements ApplicationRunner {
 		SpringApplication.run(Day13Application.class, args);
 	}
 	@Override
-	public void run(ApplicationArguments args){
+	public void run(ApplicationArguments args) throws Exception{
 		if (args.containsOption("dataDir")){
 			final String dataDir = args.getOptionValues("dataDir").get(0);
 			File fileDir = new File(dataDir);
-			if (!fileDir.exists()){
+			if (!fileDir.exists()) {
 				fileDir.mkdir();
+				System.out.println("***" + fileDir.getAbsolutePath());
+				System.out.println("***" + fileDir.getPath());
+				System.out.println("***" + fileDir.getParent());
+			} else {
+				System.out.println(fileDir.getAbsolutePath());
 			}
 		}
 	}
-
+	//mvn spring-boot:run -Dspring-boot.run.arguments="--dataDir=C:/Users/user/My File/TFIP/Code/day13""
 }
